@@ -31,7 +31,8 @@
 
 </style>
   <h1>Update Task: <%= @task.title %></h1>
-<form class="form_in" action="/update/<%= @task.id %>" method="post">
-  <textarea name='task[description]'></textarea><br/>
+  <form class="form_in" action="/update/<%= @task.id %>" method="post">
+  <input type='text' name='title'/><br/>
+  <textarea name='description'></textarea><br/>
   <input type="submit" class="task-btn"/>
 </form> 

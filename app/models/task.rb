@@ -30,8 +30,12 @@ class Task
     database.execute("DELETE FROM tasks WHERE id= ?;", id)
   end
 
-  def self.update(description, id)
+  def self.update_description(description, id)
     database.execute("UPDATE tasks SET DESCRIPTION= ? WHERE id= ?", description, id)
+  end
+
+  def self.update_title(title, id)
+    database.execute("UPDATE tasks SET Title= ? WHERE id= ?", title, id)
   end
 
   def self.database

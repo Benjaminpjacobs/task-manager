@@ -32,7 +32,8 @@ class TaskManagerApp < Sinatra::Base
   end
 
   post '/update/:id' do
-    Task.update(params[:task][:description], params[:id])
+    Task.update_title(params[:title], params[:id]) unless params[:title].empty?
+    Task.update_description(params[:description], params[:id]) unless params[:description].empty?
     @tasks = Task.all
     erb :index
   end
