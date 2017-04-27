@@ -26,11 +26,6 @@ class TaskManagerApp < Sinatra::Base
     erb :confirm_delete
   end
 
-  get '/delete' do
-    @tasks = Task.all
-    erb :delete_menu
-  end
-
   post '/tasks' do
     task = Task.new(params[:task])
     task.save
