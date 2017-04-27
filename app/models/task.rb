@@ -30,6 +30,10 @@ class Task
     database.execute("DELETE FROM tasks WHERE id= ?;", id)
   end
 
+  def self.update(description, id)
+    database.execute("UPDATE tasks SET DESCRIPTION= ? WHERE id= ?", description, id)
+  end
+
   def self.database
     database = SQLite3::Database.new('db/task_manager_development.db')
     database.results_as_hash = true
