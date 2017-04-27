@@ -1,6 +1,38 @@
-<form action="/tasks" method="post">
-  <p>Enter a new task:</p>
+
+<style>
+
+  form {
+      margin-left: 680px;
+  }
+
+  input {
+    margin: 20px 0px
+  }
+
+  input[type=text] {
+    background-color: #e6e6e6;
+    border: 2px solid #e6e6e6;
+    border-radius: 4px;
+    height: 20px;
+     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  textarea {
+    width: 25%;
+    border: 2px solid #e6e6e6;
+    border-radius: 4px;
+    background-color: #e6e6e6;
+    resize: none;
+  }
+
+  
+
+
+
+</style>
+  <h1>Enter a new task:</h1>
+<form class="form_in" action="/tasks" method="post">
   <input type='text' name='task[title]'/><br/>
-  <textarea name = 'task[description]'></textarea><br/>
-  <input type="submit"/>
+  <textarea name='task[description]'></textarea><br/>
+  <input type="submit" class="task-btn"/>
 </form> 

@@ -1,0 +1,12 @@
+<div class="return">
+<a href="/">Return to Dashboard</a>
+</div>
+
+<h1 class= "dashboard">Delete Tasks:</h1>
+
+<% @tasks.each do |task| %>
+  <div class="task">
+  <h3><a href="/delete/<%= task.id %>"><%= task.title %></a></h3>
+  <p><%= task.description %></p>
+  </div>
+<% end %>
