@@ -20,6 +20,12 @@ class TaskManagerApp < Sinatra::Base
     @task = Task.find(params[:id])
     erb :show
   end
+  
+  post '/tasks' do
+    task = Task.new(params[:task])
+    task.save
+    redirect '/tasks'
+  end
 
   get '/delete/:id' do
     Task.delete(params[:id])
@@ -32,16 +38,13 @@ class TaskManagerApp < Sinatra::Base
   end
 
   post '/update/:id' do
-    Task.update_title(params[:title], params[:id]) unless params[:title].empty?
-    Task.update_description(params[:description], params[:id]) unless params[:description].empty?
+    Task.update_title(params[:title], params[:id]) unless 
+    params[:title].empty?
+    Task.update_description(params[:description], params[:id]) unless 
+    params[:description].empty?
     @tasks = Task.all
     erb :index
   end
-  
-  post '/tasks' do
-    task = Task.new(params[:task])
-    task.save
-    redirect '/tasks'
-  end
+
   
 end

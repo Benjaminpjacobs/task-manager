@@ -19,6 +19,7 @@
 
 <h1 class= "dashboard">All Tasks</h1>
 
+<div>
 <% @tasks.each do |task| %>
   <div class="task">
   <h3><a href="/tasks/<%= task.id %>"><%= task.title %></a></h3>
@@ -27,3 +28,4 @@
   <a href="/update/<%= task.id %>"><button type="button" class="delete">Update</button></a>
   </div>
 <% end %>
+</div>
