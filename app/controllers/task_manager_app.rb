@@ -27,24 +27,22 @@ class TaskManagerApp < Sinatra::Base
     redirect '/tasks'
   end
 
-  get '/delete/:id' do
-    Task.delete(params[:id])
-    erb :confirm_delete
-  end
-
-  get '/update/:id' do
+  get '/tasks/:id/edit' do
     @task = Task.find(params[:id])
-    erb :update
+    erb :edit
   end
+  
+  set :method_override, true
 
-  post '/update/:id' do
-    Task.update_title(params[:title], params[:id]) unless 
-    params[:title].empty?
-    Task.update_description(params[:description], params[:id]) unless 
-    params[:description].empty?
-    @tasks = Task.all
-    erb :index
+  put '/tasks/:id' do |id|
+    Task.update(id.to_i, params[:task])
+    redirect "/tasks/#{id}"
   end
-
+  
+  delete '/tasks/:id' do |id|
+    Task.destroy(id.to_i)
+    redirect '/tasks'
+  end
+  
   
 end

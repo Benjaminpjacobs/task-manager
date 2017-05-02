@@ -1,31 +1,25 @@
-<style>
-.delete {
-    background: linear-gradient(#fff, #bfbfbf);
-    margin: 10px 8px;
-    border-radius: 10px;
-    color: black;
-    text-align: center;
-    text-decoration: none;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: inline-block;
-    font-size: 12px;
-}
-
-</style>
-
 <div class="return">
-<a href="/">Return to Dashboard</a>
+    <a href="/">Return to Dashboard</a>
 </div>
 
-<h1 class= "dashboard">All Tasks</h1>
+<h1 class="dashboard">All Tasks</h1>
 
 <div>
-<% @tasks.each do |task| %>
-  <div class="task">
-  <h3><a href="/tasks/<%= task.id %>"><%= task.title %></a></h3>
-  <p><%= task.description %></p>
-  <a href="/delete/<%= task.id %>"><button type="button" class="delete">Delete</button></a>
-  <a href="/update/<%= task.id %>"><button type="button" class="delete">Update</button></a>
-  </div>
-<% end %>
+    <% @tasks.each do |task| %>
+        <div class="task">
+            <h3>
+                <a href="/tasks/<%= task.id %>">
+                    <%= task.title %>
+                </a>
+            </h3>
+            <p>
+                <%= task.description %>
+            </p>
+            <a href="/tasks/<%= task.id% >/edit">Edit</a>
+        </div>
+        <form action="/tasks/<%= task.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="delete" />
+        </form>
+        <% end %>
 </div>
